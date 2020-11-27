@@ -11,38 +11,38 @@
   DTS:LocaleID="10250"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="1"
-  DTS:VersionGUID="{98C2D229-5E96-446F-AFE5-31A1D9096924}">
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{BFC17C48-0724-4341-888D-AABCDF548C37}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[LocalHost.NORTHWIND.sa]"
       DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
-      DTS:DTSID="{1D49E3DB-2EEA-4E01-8B7D-FF2674AF2AA0}"
+      DTS:DTSID="{09039F52-9696-4A09-9524-945B2559B301}"
       DTS:ObjectName="LocalHost.NORTHWIND.sa">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=.;User ID=sa;Initial Catalog=NORTHWIND;Persist Security Info=True;Application Name=SSIS-Package-{1D49E3DB-2EEA-4E01-8B7D-FF2674AF2AA0}LocalHost.NORTHWIND.sa;">
+          DTS:ConnectionString="Data Source=.;User ID=sa;Initial Catalog=NORTHWIND;Application Name=SSIS-Package-{09039F52-9696-4A09-9524-945B2559B301}LocalHost.NORTHWIND.sa;">
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA13jUf9LXCkS52PPsXTLTSwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACf/QlTsMrm3KuIQlmqhYwXJqsUA9A+vD+2kteq0w91PgAAAAAOgAAAAAIAACAAAADO4XvavYiVF6UXnmohmya2OuIDtNAQdStiXb4Vd5EzTiAAAACFjTy79879QoH3zVhnkfGeCexZTOufJWyZhuJbGwEnC0AAAAAvEfbhwV5c0Un3qMO30xe9Z3NFmklZPiuKm+MKJg/RgqsZQjaMCj+cCftld+u+sSo7LosMdIc/pGuo7gqZ4X34</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA13jUf9LXCkS52PPsXTLTSwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACNoXjCmGD4tTS6BR1iNv2DlQ34blOoDtVNfP+xtrJGYQAAAAAOgAAAAAIAACAAAAAGw+UgQfUmUZ9KD6qxjgEQIMgvBizdQtvejnfJWhxu4SAAAAAqBjxX9aITcHrbgW6iifjvwAIX5WMRu/B6U3NpC5DoH0AAAABH+WTKBslDMZbphRbuS5ctDyrJwxwnc4ez7FzrYJY4sN001vXMnp1FuR4sTD6uYvgjy5lg9yvYkJqs+tvEYFge</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[LocalHost.NORTHWIND.sa 1]"
+      DTS:refId="Package.ConnectionManagers[LocalHost.NW_DM.sa]"
       DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
-      DTS:DTSID="{CA22911A-30AD-4E5B-A571-AC4950D2346B}"
-      DTS:ObjectName="LocalHost.NORTHWIND.sa 1">
+      DTS:DTSID="{61575BD3-55C0-4B17-A0BA-C205E1815862}"
+      DTS:ObjectName="LocalHost.NW_DM.sa">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=.;User ID=sa;Initial Catalog=NORTHWIND;Persist Security Info=True;Application Name=SSIS-Package-{CA22911A-30AD-4E5B-A571-AC4950D2346B}LocalHost.NORTHWIND.sa 1;">
+          DTS:ConnectionString="Data Source=.;User ID=sa;Initial Catalog=NW_DM;Application Name=SSIS-Package-{61575BD3-55C0-4B17-A0BA-C205E1815862}LocalHost.NW_DM.sa;">
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA13jUf9LXCkS52PPsXTLTSwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAD5FMXOaVCo8qtXMuitmKc8jbykgLo3FTDzwW+1xqdBHgAAAAAOgAAAAAIAACAAAABKQc1rYCyLq0OPG7i8QH7hCE44SYbFwRNrwJQQCZX5uyAAAAB1h4VDrBfvjQbG5ScOv5ACeJJHxeOPjHHbUAV4HaZk/0AAAAD9eA9IHqfteQxezjE7SCq67osrjOlLItFbY3EOU37Hk9iNJrvGrsVpIO0z+2E7xg6k/KDDDZ7F1gaJDCrmJRPh</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA13jUf9LXCkS52PPsXTLTSwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADSaN4YMLnZU1wEY12vdLMeYm+9hokn1t4YfBzsyMwQswAAAAAOgAAAAAIAACAAAAB1xRUCwtV1llXOadtr9fVZx3qGA6jXZ0K3IWV591ryMSAAAAC7xqww8AeNSnRSwmN8FSfsQBD+BDJ2F3oCXFb3hL55E0AAAACl6Jw1fxEEBdSrnMYcnjTXAhab7qfAY0Qi5/dbAIrkmd5WcCGNzwqUhf4F8e1V1hHsQ2tU5QrVN3guyWtepwxM</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -77,7 +77,7 @@
                   description="The Destination database table name."
                   expressionType="Notify"
                   name="TableOrViewName"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."DIM_CLIENTES"</property>
                 <property
                   dataType="System.Int32"
                   description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
@@ -100,6 +100,8 @@
               <connections>
                 <connection
                   refId="Package\Carga clientes\Cargar a clientes.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.NW_DM.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.NW_DM.sa]"
                   description="Managed connection manager"
                   name="IDbConnection" />
               </connections>
@@ -109,8 +111,51 @@
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga clientes\Cargar a clientes.Inputs[ADO NET Destination Input].Columns[ContactName]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="ContactName"
+                      externalMetadataColumnId="Package\Carga clientes\Cargar a clientes.Inputs[ADO NET Destination Input].ExternalColumns[NOMBRES]"
+                      lineageId="Package\Carga clientes\Leer Curstomers.Outputs[ADO NET Source Output].Columns[ContactName]" />
+                    <inputColumn
+                      refId="Package\Carga clientes\Cargar a clientes.Inputs[ADO NET Destination Input].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Country"
+                      externalMetadataColumnId="Package\Carga clientes\Cargar a clientes.Inputs[ADO NET Destination Input].ExternalColumns[PAIS]"
+                      lineageId="Package\Carga clientes\Leer Curstomers.Outputs[ADO NET Source Output].Columns[Country]" />
+                    <inputColumn
+                      refId="Package\Carga clientes\Cargar a clientes.Inputs[ADO NET Destination Input].Columns[City]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="City"
+                      externalMetadataColumnId="Package\Carga clientes\Cargar a clientes.Inputs[ADO NET Destination Input].ExternalColumns[CIUDAD]"
+                      lineageId="Package\Carga clientes\Leer Curstomers.Outputs[ADO NET Source Output].Columns[City]" />
+                  </inputColumns>
                   <externalMetadataColumns
-                    isUsed="True" />
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga clientes\Cargar a clientes.Inputs[ADO NET Destination Input].ExternalColumns[ID_CLIENTE]"
+                      dataType="i4"
+                      name="ID_CLIENTE" />
+                    <externalMetadataColumn
+                      refId="Package\Carga clientes\Cargar a clientes.Inputs[ADO NET Destination Input].ExternalColumns[NOMBRES]"
+                      dataType="wstr"
+                      length="50"
+                      name="NOMBRES" />
+                    <externalMetadataColumn
+                      refId="Package\Carga clientes\Cargar a clientes.Inputs[ADO NET Destination Input].ExternalColumns[PAIS]"
+                      dataType="wstr"
+                      length="50"
+                      name="PAIS" />
+                    <externalMetadataColumn
+                      refId="Package\Carga clientes\Cargar a clientes.Inputs[ADO NET Destination Input].ExternalColumns[CIUDAD]"
+                      dataType="wstr"
+                      length="50"
+                      name="CIUDAD" />
+                  </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
@@ -139,52 +184,6 @@
               </outputs>
             </component>
             <component
-              refId="Package\Carga clientes\Data Conversion"
-              componentClassID="Microsoft.DataConvert"
-              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Data Conversion"
-              name="Data Conversion"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Carga clientes\Data Conversion.Inputs[Data Conversion Input]"
-                  name="Data Conversion Input">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Carga clientes\Data Conversion.Outputs[Data Conversion Output]"
-                  exclusionGroup="1"
-                  name="Data Conversion Output"
-                  synchronousInputId="Package\Carga clientes\Data Conversion.Inputs[Data Conversion Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Carga clientes\Data Conversion.Outputs[Data Conversion Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Data Conversion Error Output"
-                  synchronousInputId="Package\Carga clientes\Data Conversion.Inputs[Data Conversion Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Carga clientes\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Carga clientes\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Carga clientes\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Carga clientes\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
               refId="Package\Carga clientes\Leer Curstomers"
               componentClassID="Microsoft.ManagedComponentHost"
               contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
@@ -198,7 +197,8 @@
                   description="Specifies the SQL statement used by the component to extract data."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT ContactName,cus.Country,cus.City
+FROM Customers cus</property>
                 <property
                   dataType="System.Int32"
                   description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
@@ -225,6 +225,8 @@
               <connections>
                 <connection
                   refId="Package\Carga clientes\Leer Curstomers.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.NORTHWIND.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.NORTHWIND.sa]"
                   description="Managed connection manager"
                   name="IDbConnection" />
               </connections>
@@ -232,14 +234,80 @@
                 <output
                   refId="Package\Carga clientes\Leer Curstomers.Outputs[ADO NET Source Output]"
                   name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga clientes\Leer Curstomers.Outputs[ADO NET Source Output].Columns[ContactName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga clientes\Leer Curstomers.Outputs[ADO NET Source Output].ExternalColumns[ContactName]"
+                      length="30"
+                      lineageId="Package\Carga clientes\Leer Curstomers.Outputs[ADO NET Source Output].Columns[ContactName]"
+                      name="ContactName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga clientes\Leer Curstomers.Outputs[ADO NET Source Output].Columns[Country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga clientes\Leer Curstomers.Outputs[ADO NET Source Output].ExternalColumns[Country]"
+                      length="15"
+                      lineageId="Package\Carga clientes\Leer Curstomers.Outputs[ADO NET Source Output].Columns[Country]"
+                      name="Country"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga clientes\Leer Curstomers.Outputs[ADO NET Source Output].Columns[City]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga clientes\Leer Curstomers.Outputs[ADO NET Source Output].ExternalColumns[City]"
+                      length="15"
+                      lineageId="Package\Carga clientes\Leer Curstomers.Outputs[ADO NET Source Output].Columns[City]"
+                      name="City"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
                   <externalMetadataColumns
-                    isUsed="True" />
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga clientes\Leer Curstomers.Outputs[ADO NET Source Output].ExternalColumns[ContactName]"
+                      dataType="wstr"
+                      length="30"
+                      name="ContactName" />
+                    <externalMetadataColumn
+                      refId="Package\Carga clientes\Leer Curstomers.Outputs[ADO NET Source Output].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="15"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\Carga clientes\Leer Curstomers.Outputs[ADO NET Source Output].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="15"
+                      name="City" />
+                  </externalMetadataColumns>
                 </output>
                 <output
                   refId="Package\Carga clientes\Leer Curstomers.Outputs[ADO NET Source Error Output]"
                   isErrorOut="true"
                   name="ADO NET Source Error Output">
                   <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga clientes\Leer Curstomers.Outputs[ADO NET Source Error Output].Columns[ContactName]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Carga clientes\Leer Curstomers.Outputs[ADO NET Source Error Output].Columns[ContactName]"
+                      name="ContactName" />
+                    <outputColumn
+                      refId="Package\Carga clientes\Leer Curstomers.Outputs[ADO NET Source Error Output].Columns[Country]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Carga clientes\Leer Curstomers.Outputs[ADO NET Source Error Output].Columns[Country]"
+                      name="Country" />
+                    <outputColumn
+                      refId="Package\Carga clientes\Leer Curstomers.Outputs[ADO NET Source Error Output].Columns[City]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Carga clientes\Leer Curstomers.Outputs[ADO NET Source Error Output].Columns[City]"
+                      name="City" />
                     <outputColumn
                       refId="Package\Carga clientes\Leer Curstomers.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -258,6 +326,13 @@
               </outputs>
             </component>
           </components>
+          <paths>
+            <path
+              refId="Package\Carga clientes.Paths[ADO NET Source Output]"
+              endId="Package\Carga clientes\Cargar a clientes.Inputs[ADO NET Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\Carga clientes\Leer Curstomers.Outputs[ADO NET Source Output]" />
+          </paths>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -285,21 +360,55 @@
     design-time-name="Package\Carga clientes">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="156,42"
           Id="Package\Carga clientes\Leer Curstomers"
-          TopLeft="111,51" />
+          TopLeft="52,39" />
         <NodeLayout
           Size="158,42"
           Id="Package\Carga clientes\Cargar a clientes"
-          TopLeft="108,223" />
-        <NodeLayout
-          Size="156,42"
-          Id="Package\Carga clientes\Data Conversion"
-          TopLeft="112,136" />
+          TopLeft="49,211" />
+        <EdgeLayout
+          Id="Package\Carga clientes.Paths[ADO NET Source Output]"
+          TopLeft="129,81">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,130"
+              Start="0,0"
+              End="0,122.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,122.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga clientes\Leer Curstomers">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga clientes\Cargar a clientes">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

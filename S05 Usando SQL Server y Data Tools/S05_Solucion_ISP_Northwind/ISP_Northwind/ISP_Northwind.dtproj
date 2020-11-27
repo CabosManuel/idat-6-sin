@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">DESKTOP-NQG67S6</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA13jUf9LXCkS52PPsXTLTSwAAAAACAAAAAAAQZgAAAAEAACAAAABg0eaxfjG45pc2yjIsi4+o1k+zWGKCI/Y9lZeQPRGZsQAAAAAOgAAAAAIAACAAAABTzlRSQRj3kMCUl/bYRTdr247CzAwORRtYx4yUY0+YgZAAAABPj6GxUFdPc89IhWFPucxUdRrBYJHm9CB6pWgx7COm/m4lgHcuYidUj1xOClTNzlpfYzPHde8mdTc95OOW3Xq60JtXdTTe+Q4OQKxuX8x+JJZjyoiyKU0zOHKk/980w8TeQnKxU9+sl6REH3qvhywz8dCestOth9PdCanZcPoc5EN/7klVhDWP8UhzMuBpGpNAAAAAXaDe9dg9zK1sFP/oc3/jB7JrZww7xqTtFCVe80Nx6ZJxcFB7Pf+pcvfSv8inc7XnJ2dAj25Q8bXbBo1tVnkDKA==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA13jUf9LXCkS52PPsXTLTSwAAAAACAAAAAAAQZgAAAAEAACAAAACbG2yNiD4d3bcGZGIxTF5PLnlAGmAprmCKkdFQ7/uaVQAAAAAOgAAAAAIAACAAAACWKBAEUKQ8XN48O3lTISv9KUknrFDUUbHcBJHMPXZOp5AAAADYL+HuzBouawJQwen8so00aOIMgWvbFYsRuur7C3povnEkKTO7IUuZYdqfSj3j/rCP1GejKNHvCbfko/zZw4UzoNO9lHJPW6H3dcagGj3bxzbffM4MIvPAgVyqIBT5+r+byistUINKCXag0lEa/uQRAXVyy7/DPTRKNp862dWJ5VAPExQx+DBaPdS+eKUWn8JAAAAADztE2lUOd+l6ydu8t/LBQK8icLkFXtIvD6M+ORkhoBGg20zuB59itsEbzUDIBnKq2ddraogXNJTUgzrFjLtDDg==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -42,10 +42,10 @@
                 <SSIS:Property SSIS:Name="Name">Package</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{98C2D229-5E96-446F-AFE5-31A1D9096924}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{BFC17C48-0724-4341-888D-AABCDF548C37}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -63,7 +63,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">Data Source=.;User ID=sa;Initial Catalog=NORTHWIND;Persist Security Info=True;Application Name=SSIS-Package-{1D49E3DB-2EEA-4E01-8B7D-FF2674AF2AA0}LocalHost.NORTHWIND.sa;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">Data Source=.;User ID=sa;Initial Catalog=NORTHWIND;Application Name=SSIS-Package-{09039F52-9696-4A09-9524-945B2559B301}LocalHost.NORTHWIND.sa;</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -141,7 +141,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.LocalHost.NORTHWIND.sa 1.ConnectionString">
+                <SSIS:Parameter SSIS:Name="CM.LocalHost.NW_DM.sa.ConnectionString">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -152,11 +152,11 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">Data Source=.;User ID=sa;Initial Catalog=NORTHWIND;Persist Security Info=True;Application Name=SSIS-Package-{CA22911A-30AD-4E5B-A571-AC4950D2346B}LocalHost.NORTHWIND.sa 1;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">Data Source=.;User ID=sa;Initial Catalog=NW_DM;Application Name=SSIS-Package-{61575BD3-55C0-4B17-A0BA-C205E1815862}LocalHost.NW_DM.sa;</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.LocalHost.NORTHWIND.sa 1.InitialCatalog">
+                <SSIS:Parameter SSIS:Name="CM.LocalHost.NW_DM.sa.InitialCatalog">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -167,11 +167,11 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">NORTHWIND</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">NW_DM</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.LocalHost.NORTHWIND.sa 1.Password">
+                <SSIS:Parameter SSIS:Name="CM.LocalHost.NW_DM.sa.Password">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -185,7 +185,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.LocalHost.NORTHWIND.sa 1.RetainSameConnection">
+                <SSIS:Parameter SSIS:Name="CM.LocalHost.NW_DM.sa.RetainSameConnection">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -200,7 +200,7 @@
                     <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.LocalHost.NORTHWIND.sa 1.ServerName">
+                <SSIS:Parameter SSIS:Name="CM.LocalHost.NW_DM.sa.ServerName">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -215,7 +215,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.LocalHost.NORTHWIND.sa 1.UserName">
+                <SSIS:Parameter SSIS:Name="CM.LocalHost.NW_DM.sa.UserName">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
