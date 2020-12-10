@@ -28,3 +28,22 @@ CREATE TABLE dim_cliente(
 	tipo_direccion nvarchar(20) NOT NULL,
 	codigo_postal nvarchar(45) NOT NULL)
 GO
+
+CREATE TABLE dim_vendedor(
+	id_vendedor int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	dni varchar(9) NOT NULL,
+	apellido nvarchar(45) NOT NULL,
+	nombres nvarchar(45) NOT NULL,
+	correo nvarchar(45) NOT NULL,
+	telefono nvarchar(20) NOT NULL,
+	tipo_telefono nvarchar(20) NOT NULL,
+	genero char(1) NOT NULL,
+	fecha_nacimiento date NOT NULL,
+	edad tinyint NOT NULL,
+	departamento nvarchar(30) NOT NULL,
+	titulo_trabajo nvarchar(30) NOT NULL,
+	fecha_contratacion date NOT NULL,
+	ordenes_enviadas tinyint NOT NULL,
+	salario_aprox decimal(8,2) NOT NULL)
+GO
+
