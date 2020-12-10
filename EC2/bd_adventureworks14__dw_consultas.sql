@@ -177,3 +177,12 @@ select top 100 * from HumanResources.Department
 */
 
 
+-- FECHA ------------------------------------------------------------------------------
+select distinct convert(date,orden_cabecera.OrderDate) as fecha,
+	convert(int,datepart(year,orden_cabecera.OrderDate)) as anio,
+	convert(int,datepart(quarter,orden_cabecera.OrderDate)) as trimestre,
+	convert(varchar,datepart(month,orden_cabecera.OrderDate)) as mes,
+	convert(int,datepart(day,orden_cabecera.OrderDate)) as dia
+from Sales.SalesOrderHeader orden_cabecera
+
+-- PRODUCTOS ------------------------------------------------------------------------------
