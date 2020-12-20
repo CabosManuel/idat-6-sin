@@ -29,6 +29,37 @@ CREATE TABLE dim_cliente(
 	codigo_postal nvarchar(45) NOT NULL)
 GO
 
+CREATE TABLE dim_fecha(
+	id_fecha int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	fecha date NOT NULL,
+	anio int NOT NULL,
+	trimestr int NOT NULL,
+	mes int NOT NULL,
+	dia int NOT NULL)
+GO
+
+CREATE TABLE dim_producto(
+	id_producto int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	nombre nvarchar(45) NOT NULL,
+	numero_producto varchar(10) NOT NULL,
+	categoria nvarchar(20) NOT NULL,
+	subcategoria nvarchar(20) NOT NULL,
+	modelo nvarchar(30) NOT NULL,
+	/*descripcion nvarchar(300) NOT NULL,
+	stock int NOT NULL*/)
+GO
+
+CREATE TABLE dim_proveedor(
+	id_proveedor int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	numero_cuenta nvarchar(20) NOT NULL,
+	nombre nvarchar(45)  NOT NULL,
+	producto_id int  NOT NULL,
+	producto nvarchar(45)  NOT NULL,
+	precio_estandar decimal(8,2)  NOT NULL,
+	orden_min int  NOT NULL,
+	orden_max int  NOT NULL)
+GO
+
 CREATE TABLE dim_vendedor(
 	id_vendedor int IDENTITY(1,1) NOT NULL PRIMARY KEY,
 	dni varchar(9) NOT NULL,
@@ -43,25 +74,16 @@ CREATE TABLE dim_vendedor(
 	departamento nvarchar(30) NOT NULL,
 	titulo_trabajo nvarchar(30) NOT NULL,
 	fecha_contratacion date NOT NULL,
-	ordenes_enviadas tinyint NOT NULL,
+	ordenes_enviadas int NOT NULL,
 	salario_aprox decimal(8,2) NOT NULL)
 GO
 
-CREATE TABLE dim_fecha(
-	id_fecha int IDENTITY(1,1) NOT NULL PRIMARY KEY,
-	fecha date NOT NULL,
-	anio int NOT NULL,
-	trimestr int NOT NULL,
-	mes int NOT NULL,
-	dia int NOT NULL)
-GO
-
 CREATE TABLE ventas(
-	id_fecha int FOREIGN KEY REFERENCES dim_tiempo(id_fecha) NOT NULL,
-	id_vehiculo int FOREIGN KEY REFERENCES dim_vehiculos(id_vehiculo) NOT NULL,
 	id_cliente int FOREIGN KEY REFERENCES dim_cliente(id_cliente) NOT NULL,
-	id_sucursal int FOREIGN KEY REFERENCES dim_sucursal(id_sucursal) NOT NULL,
-	id_empleado int FOREIGN KEY REFERENCES dim_empleado(id_empleado) NOT NULL,
-	precio decimal(8,2) NOT NULL
-)
+	id_fecha int FOREIGN KEY REFERENCES dim_fecha(id_fecha) NOT NULL,
+	id_producto int FOREIGN KEY REFERENCES dim_producto(id_producto) NOT NULL,
+	id_vendedor int FOREIGN KEY REFERENCES dim_vendedor(id_vendedor) /*NOT*/ NULL,
+	id_proveedor int FOREIGN KEY REFERENCES dim_proveedor(id_proveedor) NOT NULL,
+	precio decimal(8,2) NOT NULL,
+	cantidad int NOT NULL)
 GO
