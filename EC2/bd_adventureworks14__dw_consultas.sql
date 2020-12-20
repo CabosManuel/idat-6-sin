@@ -1,30 +1,4 @@
-use bd_adventureworks14
-go
-
-/* https://www.sqldatadictionary.com/AdventureWorks2014/Person.Person.html
-SC = contacto de la tienda
-IN = cliente individual (minorista)
-SP = vendedor
-EM = empleado (no ventas)
-VC = contacto con el proveedor
-GC = contacto general
-*/
-
-/*
-cliente
-	apellido
-	nombres
-	correo
-	telefono
-	tipo_telefono
-	pais
-	estado
-	direccion
-	tipo_direccion
-	codigo_postal
-*/
-
--- CLIENTE
+-- CLIENTE ------------------------------------------------------------------------------
 select distinct persona.LastName as apellido, 
 	concat(persona.FirstName,' ',persona.MiddleName) as nombres, 
 	correo.EmailAddress as correo, 
@@ -58,64 +32,52 @@ where persona.PersonType like 'IN'
 order by persona.LastName
 go
 
-/*BORRADOR
-select /*top 10*/ * from Person.BusinessEntityAddress
-select top 10 * from Person.AddressType
-select top 10 * from Person.Address
-select top 10 * from Person.StateProvince
-select top 10 * from Person.CountryRegion
+-- FECHA ------------------------------------------------------------------------------
+select distinct convert(date,orden_cabecera.OrderDate) as fecha,
+	convert(int,datepart(year,orden_cabecera.OrderDate)) as anio,
+	convert(int,datepart(quarter,orden_cabecera.OrderDate)) as trimestre,
+	convert(varchar,datepart(month,orden_cabecera.OrderDate)) as mes,
+	convert(int,datepart(day,orden_cabecera.OrderDate)) as dia
+from Sales.SalesOrderHeader orden_cabecera
+go
 
-select * from Person.Person pp
-inner join Person.BusinessEntity pb
-on pp.BusinessEntityID = pb.BusinessEntityID
-	where pp.PersonType like 'IN'--pp.BusinessEntityID = 
+-- PRODUCTO ------------------------------------------------------------------------------
+select producto.Name as nombre
+	,producto.ProductNumber as numero_producto
+	,ISNULL(categoria.Name,'-') as categoria
+	,isnull(subcategoria.Name,'-') as subcategoria
+	,isnull(modelo.Name,'-') as modelo
+from Production.Product producto
+	left join Production.ProductSubcategory subcategoria
+	on subcategoria.ProductSubcategoryID = producto.ProductSubcategoryID
+	left join Production.ProductCategory categoria
+	on categoria.ProductCategoryID = subcategoria.ProductSubcategoryID
+	left join Production.ProductModel modelo
+	on modelo.ProductModelID = producto.ProductModelID
+go
 
-select top 10 * from Person.BusinessEntity
-select top 1000 * from Person.Person
-	-- correo
-	select * from Person.EmailAddress
-	-- telefono	
-	select * from Person.PhoneNumberType
-	select * from Person.PersonPhone
-	select * from Person.ContactType
-	select * from Person.BusinessEntityContact order by ContactTypeID
-*/
+-- PROVEEDOR ------------------------------------------------------------------------------
+select proveedor.AccountNumber as numero_cuenta,
+	proveedor.Name as nombre,
+	producto.ProductID as producto_id,
+	producto.Name as producto,
+	producto_proveedor.StandardPrice as precio_estandar,
+	producto_proveedor.MinOrderQty as orden_min,
+	producto_proveedor.MaxOrderQty as orden_max
+from Purchasing.Vendor proveedor
+	inner join Purchasing.ProductVendor producto_proveedor
+	on producto_proveedor.BusinessEntityID = proveedor.BusinessEntityID
+	inner join Production.Product producto
+	on producto.ProductID = producto_proveedor.ProductID
+	order by producto_id
+go
 
 -- VENDEDOR ------------------------------------------------------------------------------
-/*
-https://www.sqldatadictionary.com/AdventureWorks2014/HumanResources.Employee.html
-https://www.sqldatadictionary.com/AdventureWorks2014/HumanResources.EmployeeDepartmentHistory.html
-
-https://www.sqldatadictionary.com/AdventureWorks2014/Sales.SalesOrderHeader.html#Sales.uSalesOrderHeader
-https://www.sqldatadictionary.com/AdventureWorks2014/Sales.SalesOrderDetail.html
-*/
-
-/* 
-vendedor
-	dni
-
-	apellido
-	nombres
-	correo
-	telefono
-	tipo_telefono
-	
-	genero
-	fecha_nacimiento
-	edad
-
-	departamento
-	titulo_trabajo
-	fecha_contratacion
-	ordenes_enviadas
-	salario_aprox
-*/
-
 select distinct vendedor.NationalIDNumber as dni,
 	persona.LastName as apellido,
-	concat(persona.FirstName,' ',persona.MiddleName) as nombres, 
+	concat(persona.FirstName,' ',persona.MiddleName) as nombres,
 	correo.EmailAddress as correo, 
-	telefono.PhoneNumber as telefono, 
+	telefono.PhoneNumber as telefono,
 	tipo_telefono.Name as tipo_telefono,
 	vendedor.Gender as genero,
 	vendedor.BirthDate as fecha_nacimiento,
@@ -153,36 +115,49 @@ where vendedor.JobTitle like '%Sales%'
 group by pago.Rate, departamento.Name, vendedor.NationalIDNumber,persona.LastName,persona.FirstName,persona.MiddleName, correo.EmailAddress, telefono.PhoneNumber, tipo_telefono.Name, vendedor.Gender,	vendedor.BirthDate,	vendedor.BirthDate,	vendedor.JobTitle,	vendedor.HireDate
 order by persona.LastName
 
-/*
-select top 1000 * /*BusinessEntityID, JobTitle*/
-from HumanResources.Employee 
-where JobTitle like '%Sales%'
-	and JobTitle not like '%President%'
-order by BusinessEntityID--JobTitle
+-- VENTAS ------------------------------------------------------------------------------
+select cliente_dw.id_cliente as id_cliente,
+	fecha_dw.id_fecha as id_fecha,
+	producto_dw.id_producto as id_producto,
+	proveedor_dw.id_proveedor as id_proveedor,
+	vendedor_dw.id_vendedor as id_vendedor,
+	o_detalle_bd.UnitPrice as precio,
+	o_detalle_bd.OrderQty as cantidad
+from AdventureWorks2014.Production.Product producto_bd
+	inner join AdventureWorks2014.Sales.SalesOrderDetail o_detalle_bd
+	on o_detalle_bd.ProductID = producto_bd.ProductID
+	inner join AdventureWorks2014.Sales.SalesOrderHeader o_cabecera_bd
+	on o_cabecera_bd.SalesOrderID = o_detalle_bd.SalesOrderID
+	inner join AdventureWorks2014.Person.Person cliente_bd
+	on cliente_bd.BusinessEntityID = o_cabecera_bd.CustomerID
+	inner join AdventureWorks2014.Purchasing.ProductVendor prod_proveedor_bd
+	on prod_proveedor_bd.ProductID = producto_bd.ProductID
+	inner join AdventureWorks2014.Purchasing.Vendor proveedor_bd
+	on proveedor_bd.BusinessEntityID = prod_proveedor_bd.BusinessEntityID
+	inner join AdventureWorks2014.HumanResources.Employee vendedor_bd
+	on vendedor_bd.BusinessEntityID = o_cabecera_bd.SalesPersonID
 
--- sales person x ventas hechas
-select /**/ SalesPersonID, count(SalesPersonID) as n
-from Sales.SalesOrderHeader 
-where SalesPersonID is not null
-	and Status = 5
---group by SalesPersonID
-order by SalesPersonID 
+	inner join AdventureWorks2014.Person.EmailAddress cliente_correo_bd
+	on cliente_correo_bd.BusinessEntityID = cliente_bd.BusinessEntityID
 
-select top 100 * from HumanResources.EmployeeDepartmentHistory dh
-where dh.DepartmentID = 3 --BusinessEntityID = 275
-	and dh.BusinessEntityID != 273
-order by dh.DepartmentID
+	inner join bd_ec2_aventureworks14_dw.dbo.dim_cliente cliente_dw
+	on cliente_dw.correo COLLATE Modern_Spanish_CI_AS like cliente_correo_bd.EmailAddress COLLATE Modern_Spanish_CI_AS
+	inner join bd_ec2_aventureworks14_dw.dbo.dim_fecha fecha_dw
+	on fecha_dw.fecha like o_cabecera_bd.OrderDate
+	inner join bd_ec2_aventureworks14_dw.dbo.dim_producto producto_dw
+	on producto_dw.nombre COLLATE Modern_Spanish_CI_AS = producto_bd.Name COLLATE Modern_Spanish_CI_AS
+	inner join bd_ec2_aventureworks14_dw.dbo.dim_proveedor proveedor_dw
+	on proveedor_dw.nombre COLLATE Modern_Spanish_CI_AS = proveedor_bd.Name COLLATE Modern_Spanish_CI_AS
+	inner join bd_ec2_aventureworks14_dw.dbo.dim_vendedor vendedor_dw
+	on vendedor_dw.dni COLLATE Modern_Spanish_CI_AS like vendedor_bd.NationalIDNumber COLLATE Modern_Spanish_CI_AS
+go
 
-select top 100 * from HumanResources.Department 
+
+/* -- ELIMIANAR DATOS --
+delete from bd_ec2_aventureworks14_dw.dbo.ventas;
+delete from bd_ec2_aventureworks14_dw.dbo.dim_cliente;
+delete from bd_ec2_aventureworks14_dw.dbo.dim_fecha;
+delete from bd_ec2_aventureworks14_dw.dbo.dim_producto;
+delete from bd_ec2_aventureworks14_dw.dbo.dim_proveedor;
+delete from bd_ec2_aventureworks14_dw.dbo.dim_vendedor;
 */
-
-
--- FECHA ------------------------------------------------------------------------------
-select distinct convert(date,orden_cabecera.OrderDate) as fecha,
-	convert(int,datepart(year,orden_cabecera.OrderDate)) as anio,
-	convert(int,datepart(quarter,orden_cabecera.OrderDate)) as trimestre,
-	convert(varchar,datepart(month,orden_cabecera.OrderDate)) as mes,
-	convert(int,datepart(day,orden_cabecera.OrderDate)) as dia
-from Sales.SalesOrderHeader orden_cabecera
-
--- PRODUCTOS ------------------------------------------------------------------------------
