@@ -44,46 +44,13 @@ CREATE TABLE dim_producto(
 	numero_producto varchar(10) NOT NULL,
 	categoria nvarchar(20) NOT NULL,
 	subcategoria nvarchar(20) NOT NULL,
-	modelo nvarchar(30) NOT NULL,
-	/*descripcion nvarchar(300) NOT NULL,
-	stock int NOT NULL*/)
-GO
-
-CREATE TABLE dim_proveedor(
-	id_proveedor int IDENTITY(1,1) NOT NULL PRIMARY KEY,
-	numero_cuenta nvarchar(20) NOT NULL,
-	nombre nvarchar(45)  NOT NULL,
-	producto_id int  NOT NULL,
-	producto nvarchar(45)  NOT NULL,
-	precio_estandar decimal(8,2)  NOT NULL,
-	orden_min int  NOT NULL,
-	orden_max int  NOT NULL)
-GO
-
-CREATE TABLE dim_vendedor(
-	id_vendedor int IDENTITY(1,1) NOT NULL PRIMARY KEY,
-	dni varchar(9) NOT NULL,
-	apellido nvarchar(45) NOT NULL,
-	nombres nvarchar(45) NOT NULL,
-	correo nvarchar(45) NOT NULL,
-	telefono nvarchar(20) NOT NULL,
-	tipo_telefono nvarchar(20) NOT NULL,
-	genero char(1) NOT NULL,
-	fecha_nacimiento date NOT NULL,
-	edad tinyint NOT NULL,
-	departamento nvarchar(30) NOT NULL,
-	titulo_trabajo nvarchar(30) NOT NULL,
-	fecha_contratacion date NOT NULL,
-	ordenes_enviadas int NOT NULL,
-	salario_aprox decimal(8,2) NOT NULL)
+	modelo nvarchar(30) NOT NULL)
 GO
 
 CREATE TABLE ventas(
 	id_cliente int FOREIGN KEY REFERENCES dim_cliente(id_cliente) NOT NULL,
 	id_fecha int FOREIGN KEY REFERENCES dim_fecha(id_fecha) NOT NULL,
 	id_producto int FOREIGN KEY REFERENCES dim_producto(id_producto) NOT NULL,
-	id_vendedor int FOREIGN KEY REFERENCES dim_vendedor(id_vendedor) /*NOT*/ NULL,
-	id_proveedor int FOREIGN KEY REFERENCES dim_proveedor(id_proveedor) NOT NULL,
 	precio decimal(8,2) NOT NULL,
 	cantidad int NOT NULL)
 GO
