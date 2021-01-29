@@ -1,0 +1,2823 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/4/2021 11:39:59 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-NQG67S6"
+  DTS:CreatorName="DESKTOP-NQG67S6\manue"
+  DTS:DTSID="{6ADC5FD9-0D5F-4D7F-9681-6995EBF75C85}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.2430.0"
+  DTS:LocaleID="10250"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{9F56962C-E9E9-4A46-8330-63EDDF442755}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{BBF98512-113E-4F0C-9D0C-B29FE5310893}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\manue\Downloads\Foto Stock ECC-PRD al 08.02_wp.xls;Extended Properties=&quot;Excel 8.0;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 1]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{120D4831-DA1E-489C-8A17-6E787A088E33}"
+      DTS:ObjectName="Excel Connection Manager 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\manue\Downloads\Foto Stock ECC-PRD al 08.02_wp (1).xls;Extended Properties=&quot;Excel 8.0;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.DM_WERKS]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{CAFA8FC6-79E2-4FC0-8A4D-F57E3951F16D}"
+      DTS:ObjectName="LocalHost.DM_WERKS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=DM_WERKS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\110"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{352BF298-682C-462C-9962-FA88B86A9E58}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="110"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\110\Excel Source"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Excel Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from ['Stock I - 08-02$'] where WERKS = 110</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\110\Excel Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager 1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\110\Excel Source.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[MATNR]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[MATNR]"
+                      length="255"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[MATNR]"
+                      name="MATNR"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[MAKTX]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[MAKTX]"
+                      length="255"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[MAKTX]"
+                      name="MAKTX"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[MTART]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[MTART]"
+                      length="255"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[MTART]"
+                      name="MTART"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[MATKL]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[MATKL]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[MATKL]"
+                      name="MATKL"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[WERKS]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[WERKS]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[WERKS]"
+                      name="WERKS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[NAME1]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[NAME1]"
+                      length="255"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[NAME1]"
+                      name="NAME1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[LGORT]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[LGORT]"
+                      length="255"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[LGORT]"
+                      name="LGORT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[LGOBE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[LGOBE]"
+                      length="255"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[LGOBE]"
+                      name="LGOBE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[MEINS]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[MEINS]"
+                      length="255"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[MEINS]"
+                      name="MEINS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[LABST]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[LABST]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[LABST]"
+                      name="LABST"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[TRAME]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[TRAME]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[TRAME]"
+                      name="TRAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[UMLMC]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[UMLMC]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[UMLMC]"
+                      name="UMLMC"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[INSME]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[INSME]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[INSME]"
+                      name="INSME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[SPEME]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[SPEME]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[SPEME]"
+                      name="SPEME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[EINME]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[EINME]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[EINME]"
+                      name="EINME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[RETME]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[RETME]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[RETME]"
+                      name="RETME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[BWESB]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[BWESB]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[BWESB]"
+                      name="BWESB"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[GLGMG]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[GLGMG]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[GLGMG]"
+                      name="GLGMG"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[SOBKZ]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[SOBKZ]"
+                      length="255"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[SOBKZ]"
+                      name="SOBKZ"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[SSNUM]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[SSNUM]"
+                      length="255"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[SSNUM]"
+                      name="SSNUM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[LVORM]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[LVORM]"
+                      length="255"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[LVORM]"
+                      name="LVORM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[CHARG]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[CHARG]"
+                      length="255"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[CHARG]"
+                      name="CHARG"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[WAERS]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[WAERS]"
+                      length="255"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[WAERS]"
+                      name="WAERS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[VMLAB]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[VMLAB]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[VMLAB]"
+                      name="VMLAB"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[VMSPE]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[VMSPE]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[VMSPE]"
+                      name="VMSPE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[VMUML]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[VMUML]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[VMUML]"
+                      name="VMUML"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[VMINS]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[VMINS]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[VMINS]"
+                      name="VMINS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[VMEIN]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[VMEIN]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[VMEIN]"
+                      name="VMEIN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[SALK3]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[SALK3]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[SALK3]"
+                      name="SALK3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[BWESB1]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[BWESB1]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[BWESB1]"
+                      name="BWESB1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[VENVL]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[VENVL]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[VENVL]"
+                      name="VENVL"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[VTRAN]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[VTRAN]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[VTRAN]"
+                      name="VTRAN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[VTRAS]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[VTRAS]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[VTRAS]"
+                      name="VTRAS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[LIFNR]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[LIFNR]"
+                      length="255"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[LIFNR]"
+                      name="LIFNR"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[KUNNR]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[KUNNR]"
+                      length="255"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[KUNNR]"
+                      name="KUNNR"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[MATNR]"
+                      dataType="wstr"
+                      length="255"
+                      name="MATNR" />
+                    <externalMetadataColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[MAKTX]"
+                      dataType="wstr"
+                      length="255"
+                      name="MAKTX" />
+                    <externalMetadataColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[MTART]"
+                      dataType="wstr"
+                      length="255"
+                      name="MTART" />
+                    <externalMetadataColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[MATKL]"
+                      dataType="r8"
+                      name="MATKL" />
+                    <externalMetadataColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[WERKS]"
+                      dataType="r8"
+                      name="WERKS" />
+                    <externalMetadataColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[NAME1]"
+                      dataType="wstr"
+                      length="255"
+                      name="NAME1" />
+                    <externalMetadataColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[LGORT]"
+                      dataType="wstr"
+                      length="255"
+                      name="LGORT" />
+                    <externalMetadataColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[LGOBE]"
+                      dataType="wstr"
+                      length="255"
+                      name="LGOBE" />
+                    <externalMetadataColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[MEINS]"
+                      dataType="wstr"
+                      length="255"
+                      name="MEINS" />
+                    <externalMetadataColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[LABST]"
+                      dataType="r8"
+                      name="LABST" />
+                    <externalMetadataColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[TRAME]"
+                      dataType="r8"
+                      name="TRAME" />
+                    <externalMetadataColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[UMLMC]"
+                      dataType="r8"
+                      name="UMLMC" />
+                    <externalMetadataColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[INSME]"
+                      dataType="r8"
+                      name="INSME" />
+                    <externalMetadataColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[SPEME]"
+                      dataType="r8"
+                      name="SPEME" />
+                    <externalMetadataColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[EINME]"
+                      dataType="r8"
+                      name="EINME" />
+                    <externalMetadataColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[RETME]"
+                      dataType="r8"
+                      name="RETME" />
+                    <externalMetadataColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[BWESB]"
+                      dataType="r8"
+                      name="BWESB" />
+                    <externalMetadataColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[GLGMG]"
+                      dataType="r8"
+                      name="GLGMG" />
+                    <externalMetadataColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[SOBKZ]"
+                      dataType="wstr"
+                      length="255"
+                      name="SOBKZ" />
+                    <externalMetadataColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[SSNUM]"
+                      dataType="wstr"
+                      length="255"
+                      name="SSNUM" />
+                    <externalMetadataColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[LVORM]"
+                      dataType="wstr"
+                      length="255"
+                      name="LVORM" />
+                    <externalMetadataColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[CHARG]"
+                      dataType="wstr"
+                      length="255"
+                      name="CHARG" />
+                    <externalMetadataColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[WAERS]"
+                      dataType="wstr"
+                      length="255"
+                      name="WAERS" />
+                    <externalMetadataColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[VMLAB]"
+                      dataType="r8"
+                      name="VMLAB" />
+                    <externalMetadataColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[VMSPE]"
+                      dataType="r8"
+                      name="VMSPE" />
+                    <externalMetadataColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[VMUML]"
+                      dataType="r8"
+                      name="VMUML" />
+                    <externalMetadataColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[VMINS]"
+                      dataType="r8"
+                      name="VMINS" />
+                    <externalMetadataColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[VMEIN]"
+                      dataType="r8"
+                      name="VMEIN" />
+                    <externalMetadataColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[SALK3]"
+                      dataType="r8"
+                      name="SALK3" />
+                    <externalMetadataColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[BWESB1]"
+                      dataType="r8"
+                      name="BWESB1" />
+                    <externalMetadataColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[VENVL]"
+                      dataType="r8"
+                      name="VENVL" />
+                    <externalMetadataColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[VTRAN]"
+                      dataType="r8"
+                      name="VTRAN" />
+                    <externalMetadataColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[VTRAS]"
+                      dataType="r8"
+                      name="VTRAS" />
+                    <externalMetadataColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[LIFNR]"
+                      dataType="wstr"
+                      length="255"
+                      name="LIFNR" />
+                    <externalMetadataColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Output].ExternalColumns[KUNNR]"
+                      dataType="wstr"
+                      length="255"
+                      name="KUNNR" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\110\Excel Source.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[MATNR]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[MATNR]"
+                      name="MATNR" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[MAKTX]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[MAKTX]"
+                      name="MAKTX" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[MTART]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[MTART]"
+                      name="MTART" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[MATKL]"
+                      dataType="r8"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[MATKL]"
+                      name="MATKL" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[WERKS]"
+                      dataType="r8"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[WERKS]"
+                      name="WERKS" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[NAME1]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[NAME1]"
+                      name="NAME1" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[LGORT]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[LGORT]"
+                      name="LGORT" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[LGOBE]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[LGOBE]"
+                      name="LGOBE" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[MEINS]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[MEINS]"
+                      name="MEINS" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[LABST]"
+                      dataType="r8"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[LABST]"
+                      name="LABST" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[TRAME]"
+                      dataType="r8"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[TRAME]"
+                      name="TRAME" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[UMLMC]"
+                      dataType="r8"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[UMLMC]"
+                      name="UMLMC" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[INSME]"
+                      dataType="r8"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[INSME]"
+                      name="INSME" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[SPEME]"
+                      dataType="r8"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[SPEME]"
+                      name="SPEME" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[EINME]"
+                      dataType="r8"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[EINME]"
+                      name="EINME" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[RETME]"
+                      dataType="r8"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[RETME]"
+                      name="RETME" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[BWESB]"
+                      dataType="r8"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[BWESB]"
+                      name="BWESB" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[GLGMG]"
+                      dataType="r8"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[GLGMG]"
+                      name="GLGMG" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[SOBKZ]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[SOBKZ]"
+                      name="SOBKZ" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[SSNUM]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[SSNUM]"
+                      name="SSNUM" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[LVORM]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[LVORM]"
+                      name="LVORM" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[CHARG]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[CHARG]"
+                      name="CHARG" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[WAERS]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[WAERS]"
+                      name="WAERS" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[VMLAB]"
+                      dataType="r8"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[VMLAB]"
+                      name="VMLAB" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[VMSPE]"
+                      dataType="r8"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[VMSPE]"
+                      name="VMSPE" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[VMUML]"
+                      dataType="r8"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[VMUML]"
+                      name="VMUML" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[VMINS]"
+                      dataType="r8"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[VMINS]"
+                      name="VMINS" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[VMEIN]"
+                      dataType="r8"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[VMEIN]"
+                      name="VMEIN" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[SALK3]"
+                      dataType="r8"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[SALK3]"
+                      name="SALK3" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[BWESB1]"
+                      dataType="r8"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[BWESB1]"
+                      name="BWESB1" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[VENVL]"
+                      dataType="r8"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[VENVL]"
+                      name="VENVL" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[VTRAN]"
+                      dataType="r8"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[VTRAN]"
+                      name="VTRAN" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[VTRAS]"
+                      dataType="r8"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[VTRAS]"
+                      name="VTRAS" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[LIFNR]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[LIFNR]"
+                      name="LIFNR" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[KUNNR]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[KUNNR]"
+                      name="KUNNR" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\110\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[DIM_110]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\110\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.DM_WERKS]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.DM_WERKS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MATNR]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="MATNR"
+                      externalMetadataColumnId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MATNR]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[MATNR]" />
+                    <inputColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MAKTX]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="MAKTX"
+                      externalMetadataColumnId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MAKTX]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[MAKTX]" />
+                    <inputColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MTART]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="MTART"
+                      externalMetadataColumnId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MTART]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[MTART]" />
+                    <inputColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MATKL]"
+                      cachedDataType="r8"
+                      cachedName="MATKL"
+                      externalMetadataColumnId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MATKL]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[MATKL]" />
+                    <inputColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[WERKS]"
+                      cachedDataType="r8"
+                      cachedName="WERKS"
+                      externalMetadataColumnId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WERKS]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[WERKS]" />
+                    <inputColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NAME1]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="NAME1"
+                      externalMetadataColumnId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NAME1]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[NAME1]" />
+                    <inputColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LGORT]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="LGORT"
+                      externalMetadataColumnId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LGORT]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[LGORT]" />
+                    <inputColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LGOBE]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="LGOBE"
+                      externalMetadataColumnId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LGOBE]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[LGOBE]" />
+                    <inputColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MEINS]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="MEINS"
+                      externalMetadataColumnId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MEINS]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[MEINS]" />
+                    <inputColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LABST]"
+                      cachedDataType="r8"
+                      cachedName="LABST"
+                      externalMetadataColumnId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LABST]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[LABST]" />
+                    <inputColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TRAME]"
+                      cachedDataType="r8"
+                      cachedName="TRAME"
+                      externalMetadataColumnId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TRAME]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[TRAME]" />
+                    <inputColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[UMLMC]"
+                      cachedDataType="r8"
+                      cachedName="UMLMC"
+                      externalMetadataColumnId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[UMLMC]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[UMLMC]" />
+                    <inputColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[INSME]"
+                      cachedDataType="r8"
+                      cachedName="INSME"
+                      externalMetadataColumnId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[INSME]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[INSME]" />
+                    <inputColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SPEME]"
+                      cachedDataType="r8"
+                      cachedName="SPEME"
+                      externalMetadataColumnId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SPEME]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[SPEME]" />
+                    <inputColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[EINME]"
+                      cachedDataType="r8"
+                      cachedName="EINME"
+                      externalMetadataColumnId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EINME]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[EINME]" />
+                    <inputColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[RETME]"
+                      cachedDataType="r8"
+                      cachedName="RETME"
+                      externalMetadataColumnId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RETME]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[RETME]" />
+                    <inputColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[BWESB]"
+                      cachedDataType="r8"
+                      cachedName="BWESB"
+                      externalMetadataColumnId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BWESB]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[BWESB]" />
+                    <inputColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[GLGMG]"
+                      cachedDataType="r8"
+                      cachedName="GLGMG"
+                      externalMetadataColumnId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GLGMG]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[GLGMG]" />
+                    <inputColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SOBKZ]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="SOBKZ"
+                      externalMetadataColumnId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SOBKZ]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[SOBKZ]" />
+                    <inputColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SSNUM]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="SSNUM"
+                      externalMetadataColumnId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SSNUM]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[SSNUM]" />
+                    <inputColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LVORM]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="LVORM"
+                      externalMetadataColumnId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LVORM]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[LVORM]" />
+                    <inputColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CHARG]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CHARG"
+                      externalMetadataColumnId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CHARG]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[CHARG]" />
+                    <inputColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[WAERS]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="WAERS"
+                      externalMetadataColumnId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WAERS]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[WAERS]" />
+                    <inputColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[VMLAB]"
+                      cachedDataType="r8"
+                      cachedName="VMLAB"
+                      externalMetadataColumnId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VMLAB]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[VMLAB]" />
+                    <inputColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[VMSPE]"
+                      cachedDataType="r8"
+                      cachedName="VMSPE"
+                      externalMetadataColumnId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VMSPE]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[VMSPE]" />
+                    <inputColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[VMUML]"
+                      cachedDataType="r8"
+                      cachedName="VMUML"
+                      externalMetadataColumnId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VMUML]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[VMUML]" />
+                    <inputColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[VMINS]"
+                      cachedDataType="r8"
+                      cachedName="VMINS"
+                      externalMetadataColumnId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VMINS]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[VMINS]" />
+                    <inputColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[VMEIN]"
+                      cachedDataType="r8"
+                      cachedName="VMEIN"
+                      externalMetadataColumnId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VMEIN]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[VMEIN]" />
+                    <inputColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SALK3]"
+                      cachedDataType="r8"
+                      cachedName="SALK3"
+                      externalMetadataColumnId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SALK3]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[SALK3]" />
+                    <inputColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[BWESB1]"
+                      cachedDataType="r8"
+                      cachedName="BWESB1"
+                      externalMetadataColumnId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BWESB1]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[BWESB1]" />
+                    <inputColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[VENVL]"
+                      cachedDataType="r8"
+                      cachedName="VENVL"
+                      externalMetadataColumnId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VENVL]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[VENVL]" />
+                    <inputColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[VTRAN]"
+                      cachedDataType="r8"
+                      cachedName="VTRAN"
+                      externalMetadataColumnId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VTRAN]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[VTRAN]" />
+                    <inputColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[VTRAS]"
+                      cachedDataType="r8"
+                      cachedName="VTRAS"
+                      externalMetadataColumnId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VTRAS]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[VTRAS]" />
+                    <inputColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LIFNR]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="LIFNR"
+                      externalMetadataColumnId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LIFNR]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[LIFNR]" />
+                    <inputColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[KUNNR]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="KUNNR"
+                      externalMetadataColumnId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KUNNR]"
+                      lineageId="Package\110\Excel Source.Outputs[Excel Source Output].Columns[KUNNR]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MATNR]"
+                      dataType="wstr"
+                      length="255"
+                      name="MATNR" />
+                    <externalMetadataColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MAKTX]"
+                      dataType="wstr"
+                      length="255"
+                      name="MAKTX" />
+                    <externalMetadataColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MTART]"
+                      dataType="wstr"
+                      length="255"
+                      name="MTART" />
+                    <externalMetadataColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MATKL]"
+                      dataType="r8"
+                      name="MATKL" />
+                    <externalMetadataColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WERKS]"
+                      dataType="r8"
+                      name="WERKS" />
+                    <externalMetadataColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NAME1]"
+                      dataType="wstr"
+                      length="255"
+                      name="NAME1" />
+                    <externalMetadataColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LGORT]"
+                      dataType="wstr"
+                      length="255"
+                      name="LGORT" />
+                    <externalMetadataColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LGOBE]"
+                      dataType="wstr"
+                      length="255"
+                      name="LGOBE" />
+                    <externalMetadataColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MEINS]"
+                      dataType="wstr"
+                      length="255"
+                      name="MEINS" />
+                    <externalMetadataColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LABST]"
+                      dataType="r8"
+                      name="LABST" />
+                    <externalMetadataColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TRAME]"
+                      dataType="r8"
+                      name="TRAME" />
+                    <externalMetadataColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[UMLMC]"
+                      dataType="r8"
+                      name="UMLMC" />
+                    <externalMetadataColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[INSME]"
+                      dataType="r8"
+                      name="INSME" />
+                    <externalMetadataColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SPEME]"
+                      dataType="r8"
+                      name="SPEME" />
+                    <externalMetadataColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EINME]"
+                      dataType="r8"
+                      name="EINME" />
+                    <externalMetadataColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RETME]"
+                      dataType="r8"
+                      name="RETME" />
+                    <externalMetadataColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BWESB]"
+                      dataType="r8"
+                      name="BWESB" />
+                    <externalMetadataColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GLGMG]"
+                      dataType="r8"
+                      name="GLGMG" />
+                    <externalMetadataColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SOBKZ]"
+                      dataType="wstr"
+                      length="255"
+                      name="SOBKZ" />
+                    <externalMetadataColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SSNUM]"
+                      dataType="wstr"
+                      length="255"
+                      name="SSNUM" />
+                    <externalMetadataColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LVORM]"
+                      dataType="wstr"
+                      length="255"
+                      name="LVORM" />
+                    <externalMetadataColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CHARG]"
+                      dataType="wstr"
+                      length="255"
+                      name="CHARG" />
+                    <externalMetadataColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WAERS]"
+                      dataType="wstr"
+                      length="255"
+                      name="WAERS" />
+                    <externalMetadataColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VMLAB]"
+                      dataType="r8"
+                      name="VMLAB" />
+                    <externalMetadataColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VMSPE]"
+                      dataType="r8"
+                      name="VMSPE" />
+                    <externalMetadataColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VMUML]"
+                      dataType="r8"
+                      name="VMUML" />
+                    <externalMetadataColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VMINS]"
+                      dataType="r8"
+                      name="VMINS" />
+                    <externalMetadataColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VMEIN]"
+                      dataType="r8"
+                      name="VMEIN" />
+                    <externalMetadataColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SALK3]"
+                      dataType="r8"
+                      name="SALK3" />
+                    <externalMetadataColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BWESB1]"
+                      dataType="r8"
+                      name="BWESB1" />
+                    <externalMetadataColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VENVL]"
+                      dataType="r8"
+                      name="VENVL" />
+                    <externalMetadataColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VTRAN]"
+                      dataType="r8"
+                      name="VTRAN" />
+                    <externalMetadataColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VTRAS]"
+                      dataType="r8"
+                      name="VTRAS" />
+                    <externalMetadataColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LIFNR]"
+                      dataType="wstr"
+                      length="255"
+                      name="LIFNR" />
+                    <externalMetadataColumn
+                      refId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KUNNR]"
+                      dataType="wstr"
+                      length="255"
+                      name="KUNNR" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\110\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\110\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\110\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\110\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\110\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\110.Paths[Excel Source Output]"
+              endId="Package\110\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Excel Source Output"
+              startId="Package\110\Excel Source.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\220"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{FF0FEFA3-C87E-4A3A-AC42-DA07E246F31E}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="220"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\220\Excel Source"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Excel Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">'Stock I - 08-02$'</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from ['Stock I - 08-02$'] where WERKS = 220</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\220\Excel Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager 1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\220\Excel Source.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[MATNR]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[MATNR]"
+                      length="255"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[MATNR]"
+                      name="MATNR"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[MAKTX]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[MAKTX]"
+                      length="255"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[MAKTX]"
+                      name="MAKTX"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[MTART]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[MTART]"
+                      length="255"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[MTART]"
+                      name="MTART"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[MATKL]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[MATKL]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[MATKL]"
+                      name="MATKL"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[WERKS]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[WERKS]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[WERKS]"
+                      name="WERKS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[NAME1]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[NAME1]"
+                      length="255"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[NAME1]"
+                      name="NAME1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[LGORT]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[LGORT]"
+                      length="255"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[LGORT]"
+                      name="LGORT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[LGOBE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[LGOBE]"
+                      length="255"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[LGOBE]"
+                      name="LGOBE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[MEINS]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[MEINS]"
+                      length="255"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[MEINS]"
+                      name="MEINS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[LABST]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[LABST]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[LABST]"
+                      name="LABST"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[TRAME]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[TRAME]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[TRAME]"
+                      name="TRAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[UMLMC]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[UMLMC]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[UMLMC]"
+                      name="UMLMC"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[INSME]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[INSME]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[INSME]"
+                      name="INSME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[SPEME]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[SPEME]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[SPEME]"
+                      name="SPEME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[EINME]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[EINME]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[EINME]"
+                      name="EINME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[RETME]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[RETME]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[RETME]"
+                      name="RETME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[BWESB]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[BWESB]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[BWESB]"
+                      name="BWESB"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[GLGMG]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[GLGMG]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[GLGMG]"
+                      name="GLGMG"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[SOBKZ]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[SOBKZ]"
+                      length="255"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[SOBKZ]"
+                      name="SOBKZ"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[SSNUM]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[SSNUM]"
+                      length="255"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[SSNUM]"
+                      name="SSNUM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[LVORM]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[LVORM]"
+                      length="255"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[LVORM]"
+                      name="LVORM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[CHARG]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[CHARG]"
+                      length="255"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[CHARG]"
+                      name="CHARG"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[WAERS]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[WAERS]"
+                      length="255"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[WAERS]"
+                      name="WAERS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[VMLAB]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[VMLAB]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[VMLAB]"
+                      name="VMLAB"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[VMSPE]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[VMSPE]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[VMSPE]"
+                      name="VMSPE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[VMUML]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[VMUML]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[VMUML]"
+                      name="VMUML"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[VMINS]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[VMINS]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[VMINS]"
+                      name="VMINS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[VMEIN]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[VMEIN]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[VMEIN]"
+                      name="VMEIN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[SALK3]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[SALK3]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[SALK3]"
+                      name="SALK3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[BWESB1]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[BWESB1]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[BWESB1]"
+                      name="BWESB1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[VENVL]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[VENVL]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[VENVL]"
+                      name="VENVL"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[VTRAN]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[VTRAN]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[VTRAN]"
+                      name="VTRAN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[VTRAS]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[VTRAS]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[VTRAS]"
+                      name="VTRAS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[LIFNR]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[LIFNR]"
+                      length="255"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[LIFNR]"
+                      name="LIFNR"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[KUNNR]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[KUNNR]"
+                      length="255"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[KUNNR]"
+                      name="KUNNR"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[MATNR]"
+                      dataType="wstr"
+                      length="255"
+                      name="MATNR" />
+                    <externalMetadataColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[MAKTX]"
+                      dataType="wstr"
+                      length="255"
+                      name="MAKTX" />
+                    <externalMetadataColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[MTART]"
+                      dataType="wstr"
+                      length="255"
+                      name="MTART" />
+                    <externalMetadataColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[MATKL]"
+                      dataType="r8"
+                      name="MATKL" />
+                    <externalMetadataColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[WERKS]"
+                      dataType="r8"
+                      name="WERKS" />
+                    <externalMetadataColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[NAME1]"
+                      dataType="wstr"
+                      length="255"
+                      name="NAME1" />
+                    <externalMetadataColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[LGORT]"
+                      dataType="wstr"
+                      length="255"
+                      name="LGORT" />
+                    <externalMetadataColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[LGOBE]"
+                      dataType="wstr"
+                      length="255"
+                      name="LGOBE" />
+                    <externalMetadataColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[MEINS]"
+                      dataType="wstr"
+                      length="255"
+                      name="MEINS" />
+                    <externalMetadataColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[LABST]"
+                      dataType="r8"
+                      name="LABST" />
+                    <externalMetadataColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[TRAME]"
+                      dataType="r8"
+                      name="TRAME" />
+                    <externalMetadataColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[UMLMC]"
+                      dataType="r8"
+                      name="UMLMC" />
+                    <externalMetadataColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[INSME]"
+                      dataType="r8"
+                      name="INSME" />
+                    <externalMetadataColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[SPEME]"
+                      dataType="r8"
+                      name="SPEME" />
+                    <externalMetadataColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[EINME]"
+                      dataType="r8"
+                      name="EINME" />
+                    <externalMetadataColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[RETME]"
+                      dataType="r8"
+                      name="RETME" />
+                    <externalMetadataColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[BWESB]"
+                      dataType="r8"
+                      name="BWESB" />
+                    <externalMetadataColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[GLGMG]"
+                      dataType="r8"
+                      name="GLGMG" />
+                    <externalMetadataColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[SOBKZ]"
+                      dataType="wstr"
+                      length="255"
+                      name="SOBKZ" />
+                    <externalMetadataColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[SSNUM]"
+                      dataType="wstr"
+                      length="255"
+                      name="SSNUM" />
+                    <externalMetadataColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[LVORM]"
+                      dataType="wstr"
+                      length="255"
+                      name="LVORM" />
+                    <externalMetadataColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[CHARG]"
+                      dataType="wstr"
+                      length="255"
+                      name="CHARG" />
+                    <externalMetadataColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[WAERS]"
+                      dataType="wstr"
+                      length="255"
+                      name="WAERS" />
+                    <externalMetadataColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[VMLAB]"
+                      dataType="r8"
+                      name="VMLAB" />
+                    <externalMetadataColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[VMSPE]"
+                      dataType="r8"
+                      name="VMSPE" />
+                    <externalMetadataColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[VMUML]"
+                      dataType="r8"
+                      name="VMUML" />
+                    <externalMetadataColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[VMINS]"
+                      dataType="r8"
+                      name="VMINS" />
+                    <externalMetadataColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[VMEIN]"
+                      dataType="r8"
+                      name="VMEIN" />
+                    <externalMetadataColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[SALK3]"
+                      dataType="r8"
+                      name="SALK3" />
+                    <externalMetadataColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[BWESB1]"
+                      dataType="r8"
+                      name="BWESB1" />
+                    <externalMetadataColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[VENVL]"
+                      dataType="r8"
+                      name="VENVL" />
+                    <externalMetadataColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[VTRAN]"
+                      dataType="r8"
+                      name="VTRAN" />
+                    <externalMetadataColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[VTRAS]"
+                      dataType="r8"
+                      name="VTRAS" />
+                    <externalMetadataColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[LIFNR]"
+                      dataType="wstr"
+                      length="255"
+                      name="LIFNR" />
+                    <externalMetadataColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Output].ExternalColumns[KUNNR]"
+                      dataType="wstr"
+                      length="255"
+                      name="KUNNR" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\220\Excel Source.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[MATNR]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[MATNR]"
+                      name="MATNR" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[MAKTX]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[MAKTX]"
+                      name="MAKTX" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[MTART]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[MTART]"
+                      name="MTART" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[MATKL]"
+                      dataType="r8"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[MATKL]"
+                      name="MATKL" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[WERKS]"
+                      dataType="r8"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[WERKS]"
+                      name="WERKS" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[NAME1]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[NAME1]"
+                      name="NAME1" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[LGORT]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[LGORT]"
+                      name="LGORT" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[LGOBE]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[LGOBE]"
+                      name="LGOBE" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[MEINS]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[MEINS]"
+                      name="MEINS" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[LABST]"
+                      dataType="r8"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[LABST]"
+                      name="LABST" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[TRAME]"
+                      dataType="r8"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[TRAME]"
+                      name="TRAME" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[UMLMC]"
+                      dataType="r8"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[UMLMC]"
+                      name="UMLMC" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[INSME]"
+                      dataType="r8"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[INSME]"
+                      name="INSME" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[SPEME]"
+                      dataType="r8"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[SPEME]"
+                      name="SPEME" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[EINME]"
+                      dataType="r8"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[EINME]"
+                      name="EINME" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[RETME]"
+                      dataType="r8"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[RETME]"
+                      name="RETME" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[BWESB]"
+                      dataType="r8"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[BWESB]"
+                      name="BWESB" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[GLGMG]"
+                      dataType="r8"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[GLGMG]"
+                      name="GLGMG" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[SOBKZ]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[SOBKZ]"
+                      name="SOBKZ" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[SSNUM]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[SSNUM]"
+                      name="SSNUM" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[LVORM]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[LVORM]"
+                      name="LVORM" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[CHARG]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[CHARG]"
+                      name="CHARG" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[WAERS]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[WAERS]"
+                      name="WAERS" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[VMLAB]"
+                      dataType="r8"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[VMLAB]"
+                      name="VMLAB" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[VMSPE]"
+                      dataType="r8"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[VMSPE]"
+                      name="VMSPE" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[VMUML]"
+                      dataType="r8"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[VMUML]"
+                      name="VMUML" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[VMINS]"
+                      dataType="r8"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[VMINS]"
+                      name="VMINS" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[VMEIN]"
+                      dataType="r8"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[VMEIN]"
+                      name="VMEIN" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[SALK3]"
+                      dataType="r8"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[SALK3]"
+                      name="SALK3" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[BWESB1]"
+                      dataType="r8"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[BWESB1]"
+                      name="BWESB1" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[VENVL]"
+                      dataType="r8"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[VENVL]"
+                      name="VENVL" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[VTRAN]"
+                      dataType="r8"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[VTRAN]"
+                      name="VTRAN" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[VTRAS]"
+                      dataType="r8"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[VTRAS]"
+                      name="VTRAS" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[LIFNR]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[LIFNR]"
+                      name="LIFNR" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[KUNNR]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[KUNNR]"
+                      name="KUNNR" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\220\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[DIM_220]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\220\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.DM_WERKS]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.DM_WERKS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MATNR]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="MATNR"
+                      externalMetadataColumnId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MATNR]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[MATNR]" />
+                    <inputColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MAKTX]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="MAKTX"
+                      externalMetadataColumnId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MAKTX]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[MAKTX]" />
+                    <inputColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MTART]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="MTART"
+                      externalMetadataColumnId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MTART]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[MTART]" />
+                    <inputColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MATKL]"
+                      cachedDataType="r8"
+                      cachedName="MATKL"
+                      externalMetadataColumnId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MATKL]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[MATKL]" />
+                    <inputColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[WERKS]"
+                      cachedDataType="r8"
+                      cachedName="WERKS"
+                      externalMetadataColumnId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WERKS]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[WERKS]" />
+                    <inputColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NAME1]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="NAME1"
+                      externalMetadataColumnId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NAME1]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[NAME1]" />
+                    <inputColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LGORT]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="LGORT"
+                      externalMetadataColumnId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LGORT]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[LGORT]" />
+                    <inputColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LGOBE]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="LGOBE"
+                      externalMetadataColumnId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LGOBE]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[LGOBE]" />
+                    <inputColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MEINS]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="MEINS"
+                      externalMetadataColumnId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MEINS]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[MEINS]" />
+                    <inputColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LABST]"
+                      cachedDataType="r8"
+                      cachedName="LABST"
+                      externalMetadataColumnId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LABST]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[LABST]" />
+                    <inputColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TRAME]"
+                      cachedDataType="r8"
+                      cachedName="TRAME"
+                      externalMetadataColumnId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TRAME]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[TRAME]" />
+                    <inputColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[UMLMC]"
+                      cachedDataType="r8"
+                      cachedName="UMLMC"
+                      externalMetadataColumnId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[UMLMC]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[UMLMC]" />
+                    <inputColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[INSME]"
+                      cachedDataType="r8"
+                      cachedName="INSME"
+                      externalMetadataColumnId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[INSME]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[INSME]" />
+                    <inputColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SPEME]"
+                      cachedDataType="r8"
+                      cachedName="SPEME"
+                      externalMetadataColumnId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SPEME]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[SPEME]" />
+                    <inputColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[EINME]"
+                      cachedDataType="r8"
+                      cachedName="EINME"
+                      externalMetadataColumnId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EINME]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[EINME]" />
+                    <inputColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[RETME]"
+                      cachedDataType="r8"
+                      cachedName="RETME"
+                      externalMetadataColumnId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RETME]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[RETME]" />
+                    <inputColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[BWESB]"
+                      cachedDataType="r8"
+                      cachedName="BWESB"
+                      externalMetadataColumnId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BWESB]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[BWESB]" />
+                    <inputColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[GLGMG]"
+                      cachedDataType="r8"
+                      cachedName="GLGMG"
+                      externalMetadataColumnId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GLGMG]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[GLGMG]" />
+                    <inputColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SOBKZ]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="SOBKZ"
+                      externalMetadataColumnId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SOBKZ]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[SOBKZ]" />
+                    <inputColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SSNUM]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="SSNUM"
+                      externalMetadataColumnId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SSNUM]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[SSNUM]" />
+                    <inputColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LVORM]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="LVORM"
+                      externalMetadataColumnId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LVORM]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[LVORM]" />
+                    <inputColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CHARG]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CHARG"
+                      externalMetadataColumnId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CHARG]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[CHARG]" />
+                    <inputColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[WAERS]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="WAERS"
+                      externalMetadataColumnId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WAERS]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[WAERS]" />
+                    <inputColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[VMLAB]"
+                      cachedDataType="r8"
+                      cachedName="VMLAB"
+                      externalMetadataColumnId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VMLAB]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[VMLAB]" />
+                    <inputColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[VMSPE]"
+                      cachedDataType="r8"
+                      cachedName="VMSPE"
+                      externalMetadataColumnId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VMSPE]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[VMSPE]" />
+                    <inputColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[VMUML]"
+                      cachedDataType="r8"
+                      cachedName="VMUML"
+                      externalMetadataColumnId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VMUML]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[VMUML]" />
+                    <inputColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[VMINS]"
+                      cachedDataType="r8"
+                      cachedName="VMINS"
+                      externalMetadataColumnId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VMINS]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[VMINS]" />
+                    <inputColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[VMEIN]"
+                      cachedDataType="r8"
+                      cachedName="VMEIN"
+                      externalMetadataColumnId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VMEIN]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[VMEIN]" />
+                    <inputColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SALK3]"
+                      cachedDataType="r8"
+                      cachedName="SALK3"
+                      externalMetadataColumnId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SALK3]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[SALK3]" />
+                    <inputColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[BWESB1]"
+                      cachedDataType="r8"
+                      cachedName="BWESB1"
+                      externalMetadataColumnId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BWESB1]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[BWESB1]" />
+                    <inputColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[VENVL]"
+                      cachedDataType="r8"
+                      cachedName="VENVL"
+                      externalMetadataColumnId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VENVL]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[VENVL]" />
+                    <inputColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[VTRAN]"
+                      cachedDataType="r8"
+                      cachedName="VTRAN"
+                      externalMetadataColumnId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VTRAN]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[VTRAN]" />
+                    <inputColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[VTRAS]"
+                      cachedDataType="r8"
+                      cachedName="VTRAS"
+                      externalMetadataColumnId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VTRAS]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[VTRAS]" />
+                    <inputColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LIFNR]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="LIFNR"
+                      externalMetadataColumnId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LIFNR]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[LIFNR]" />
+                    <inputColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[KUNNR]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="KUNNR"
+                      externalMetadataColumnId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KUNNR]"
+                      lineageId="Package\220\Excel Source.Outputs[Excel Source Output].Columns[KUNNR]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MATNR]"
+                      dataType="wstr"
+                      length="255"
+                      name="MATNR" />
+                    <externalMetadataColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MAKTX]"
+                      dataType="wstr"
+                      length="255"
+                      name="MAKTX" />
+                    <externalMetadataColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MTART]"
+                      dataType="wstr"
+                      length="255"
+                      name="MTART" />
+                    <externalMetadataColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MATKL]"
+                      dataType="r8"
+                      name="MATKL" />
+                    <externalMetadataColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WERKS]"
+                      dataType="r8"
+                      name="WERKS" />
+                    <externalMetadataColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NAME1]"
+                      dataType="wstr"
+                      length="255"
+                      name="NAME1" />
+                    <externalMetadataColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LGORT]"
+                      dataType="wstr"
+                      length="255"
+                      name="LGORT" />
+                    <externalMetadataColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LGOBE]"
+                      dataType="wstr"
+                      length="255"
+                      name="LGOBE" />
+                    <externalMetadataColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MEINS]"
+                      dataType="wstr"
+                      length="255"
+                      name="MEINS" />
+                    <externalMetadataColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LABST]"
+                      dataType="r8"
+                      name="LABST" />
+                    <externalMetadataColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TRAME]"
+                      dataType="r8"
+                      name="TRAME" />
+                    <externalMetadataColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[UMLMC]"
+                      dataType="r8"
+                      name="UMLMC" />
+                    <externalMetadataColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[INSME]"
+                      dataType="r8"
+                      name="INSME" />
+                    <externalMetadataColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SPEME]"
+                      dataType="r8"
+                      name="SPEME" />
+                    <externalMetadataColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EINME]"
+                      dataType="r8"
+                      name="EINME" />
+                    <externalMetadataColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RETME]"
+                      dataType="r8"
+                      name="RETME" />
+                    <externalMetadataColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BWESB]"
+                      dataType="r8"
+                      name="BWESB" />
+                    <externalMetadataColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GLGMG]"
+                      dataType="r8"
+                      name="GLGMG" />
+                    <externalMetadataColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SOBKZ]"
+                      dataType="wstr"
+                      length="255"
+                      name="SOBKZ" />
+                    <externalMetadataColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SSNUM]"
+                      dataType="wstr"
+                      length="255"
+                      name="SSNUM" />
+                    <externalMetadataColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LVORM]"
+                      dataType="wstr"
+                      length="255"
+                      name="LVORM" />
+                    <externalMetadataColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CHARG]"
+                      dataType="wstr"
+                      length="255"
+                      name="CHARG" />
+                    <externalMetadataColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WAERS]"
+                      dataType="wstr"
+                      length="255"
+                      name="WAERS" />
+                    <externalMetadataColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VMLAB]"
+                      dataType="r8"
+                      name="VMLAB" />
+                    <externalMetadataColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VMSPE]"
+                      dataType="r8"
+                      name="VMSPE" />
+                    <externalMetadataColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VMUML]"
+                      dataType="r8"
+                      name="VMUML" />
+                    <externalMetadataColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VMINS]"
+                      dataType="r8"
+                      name="VMINS" />
+                    <externalMetadataColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VMEIN]"
+                      dataType="r8"
+                      name="VMEIN" />
+                    <externalMetadataColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SALK3]"
+                      dataType="r8"
+                      name="SALK3" />
+                    <externalMetadataColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BWESB1]"
+                      dataType="r8"
+                      name="BWESB1" />
+                    <externalMetadataColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VENVL]"
+                      dataType="r8"
+                      name="VENVL" />
+                    <externalMetadataColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VTRAN]"
+                      dataType="r8"
+                      name="VTRAN" />
+                    <externalMetadataColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VTRAS]"
+                      dataType="r8"
+                      name="VTRAS" />
+                    <externalMetadataColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LIFNR]"
+                      dataType="wstr"
+                      length="255"
+                      name="LIFNR" />
+                    <externalMetadataColumn
+                      refId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KUNNR]"
+                      dataType="wstr"
+                      length="255"
+                      name="KUNNR" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\220\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\220\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\220\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\220\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\220\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\220.Paths[Excel Source Output]"
+              endId="Package\220\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Excel Source Output"
+              startId="Package\220\Excel Source.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{C76134D8-7AB5-4ACA-9A1E-2FCD8889A287}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CAFA8FC6-79E2-4FC0-8A4D-F57E3951F16D}"
+          SQLTask:SqlStatementSource="DELETE FROM DIM_110;&#xA;DELETE FROM DIM_220;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{A06F115B-838F-47D5-90E2-39D4D949F269}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\220" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{809CC919-79CE-432B-8D7E-FA72B17645DF}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\110" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="96,42"
+          Id="Package\220"
+          TopLeft="131,151" />
+        <NodeLayout
+          Size="96,42"
+          Id="Package\110"
+          TopLeft="290,146" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Execute SQL Task"
+          TopLeft="175,37" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="230.666666666667,79">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-51.6666666666667,72"
+              Start="0,0"
+              End="-51.6666666666667,64.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.2199270959903" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.2199270959903"
+                    Point2="0,29.2199270959903"
+                    Point3="-4,29.2199270959903" />
+                  <mssgle:LineSegment
+                    End="-47.6666666666667,29.2199270959903" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-47.6666666666667,29.2199270959903"
+                    Point2="-51.6666666666667,29.2199270959903"
+                    Point3="-51.6666666666667,33.2199270959903" />
+                  <mssgle:LineSegment
+                    End="-51.6666666666667,64.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="282.333333333333,79">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="55.6666666666667,67"
+              Start="0,0"
+              End="55.6666666666667,59.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.1907654921021" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.1907654921021"
+                    Point2="0,27.1907654921021"
+                    Point3="4,27.1907654921021" />
+                  <mssgle:LineSegment
+                    End="51.6666666666667,27.1907654921021" />
+                  <mssgle:CubicBezierSegment
+                    Point1="51.6666666666667,27.1907654921021"
+                    Point2="55.6666666666667,27.1907654921021"
+                    Point3="55.6666666666667,31.1907654921021" />
+                  <mssgle:LineSegment
+                    End="55.6666666666667,59.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\220">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="139,42"
+          Id="Package\220\Excel Source"
+          TopLeft="103,40" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\220\OLE DB Destination"
+          TopLeft="87,165" />
+        <EdgeLayout
+          Id="Package\220.Paths[Excel Source Output]"
+          TopLeft="172.5,82">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,83"
+              Start="0,0"
+              End="0,75.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,75.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\220\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\220\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\110">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="139,42"
+          Id="Package\110\Excel Source"
+          TopLeft="173,93" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\110\OLE DB Destination"
+          TopLeft="159,158" />
+        <EdgeLayout
+          Id="Package\110.Paths[Excel Source Output]"
+          TopLeft="243.5,135">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,23"
+              Start="0,0"
+              End="0,15.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\110\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\110\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
